@@ -34,12 +34,14 @@ npm run dev
 
 ## Project Structure
 
+```
 src/
-types/ → TypeScript types
-store/ → Zustand store
-data/ → Hardcoded templates
-components/ → UI components
-utils/ → Export HTML helper
+  types/        → TypeScript types
+  store/        → Zustand store
+  data/         → Hardcoded templates
+  components/   → UI components
+  utils/        → Export HTML helper
+```
 
 ---
 
@@ -62,14 +64,14 @@ utils/ → Export HTML helper
 
 ## Progress Log
 
-| Day        | Date   | Task                                | Status         |
-| ---------- | ------ | ----------------------------------- | -------------- |
-| Pre-Sprint | May 19 | Architecture planning + document    | ✅ Done        |
-| Day 1      | May 20 | Project scaffolding + Zustand store | 🔄 In Progress |
-| Day 2      | May 21 | Template Gallery                    | ⬜ Todo        |
-| Day 3      | May 22 | Editor layout + Preview             | ⬜ Todo        |
-| Day 4      | May 23 | Element Settings                    | ⬜ Todo        |
-| Day 5      | May 24 | Page Settings + Integration test    | ⬜ Todo        |
-| Day 6      | May 25 | Export HTML                         | ⬜ Todo        |
-| Day 7      | May 26 | Export HTML + Safe Navigation       | ⬜ Todo        |
-| Day 8      | May 27 | QA + Submit                         | ⬜ Todo        |
+| Day        | Date   | Task                                | Status  |
+| ---------- | ------ | ----------------------------------- | ------- |
+| Pre-Sprint | May 19 | Architecture planning + document    | ✅ Done |
+| Day 1      | May 20 | Project scaffolding + Zustand store | ✅ Done |
+| Day 2      | May 21 | Template Gallery                    | ⬜ Todo |
+| Day 3      | May 22 | Editor layout + Preview             | ⬜ Todo |
+| Day 4      | May 23 | Element Settings                    | ⬜ Todo |
+| Day 5      | May 24 | Page Settings + Integration test    | ⬜ Todo |
+| Day 6      | May 25 | Export HTML                         | ⬜ Todo |
+| Day 7      | May 26 | Export HTML + Safe Navigation       | ⬜ Todo |
+| Day 8      | May 27 | QA + Submit                         | ⬜ Todo |
