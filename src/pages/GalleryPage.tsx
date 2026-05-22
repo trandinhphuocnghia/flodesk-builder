@@ -1,9 +1,18 @@
 import { Arrange, Box, Text } from "@flodesk/grain";
 import { TemplateCard } from "../components/gallery/TemplateCard";
 import { templates } from "../data/template";
+import { useBuilderStore } from "../stores/useBuilderStore";
+import type { Template } from "../types";
+import { useNavigate } from "react-router-dom";
 
 export function GalleryPage() {
-  function handleSelect() {}
+  const navigate = useNavigate();
+  const setTemplate = useBuilderStore((state) => state.setTemplate);
+
+  function handleSelect(template: Template) {
+    setTemplate(template);
+    navigate(`/${template.id}/build`);
+  }
 
   return (
     <Box padding="l" className="grn-context">

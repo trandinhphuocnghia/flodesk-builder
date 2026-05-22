@@ -1,11 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { BuilderState } from "../types";
+import type { BuilderActions, BuilderState } from "../types";
 import { STORAGE_KEY } from "../constants";
 
-export const useBuilderStore = create<BuilderState>()(
+type BuilderStore = BuilderState & BuilderActions;
+export const useBuilderStore = create<BuilderStore>()(
   persist(
-    (): BuilderState => ({
+    (set): BuilderStore => ({
       templateId: null,
       pageSettings: {
         backgroundColor: "#ffffff",
@@ -14,6 +15,15 @@ export const useBuilderStore = create<BuilderState>()(
       elements: {},
       elementOrder: [],
       activeElementId: null,
+
+      setTemplate: (template) =>
+        set({
+          templateId: template.id,
+          pageSettings: { ...template.pageSettings },
+          elements: { ...template.elements },
+          elementOrder: [...template.elementOrder],
+          activeElementId: null,
+        }),
     }),
     {
       name: STORAGE_KEY,

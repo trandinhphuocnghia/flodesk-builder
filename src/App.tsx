@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import { GalleryPage } from "./pages/GalleryPage";
+import { EditorPage, GalleryPage } from "./pages";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<GalleryPage />} />
+      <Route path={"/:id/build"} element={<EditorPage />} />
     </Routes>
   );
 }
