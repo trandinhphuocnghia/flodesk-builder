@@ -68,7 +68,7 @@ src/
 | ---------- | ------ | ----------------------------------- | ------- |
 | Pre-Sprint | May 19 | Architecture planning + document    | ✅ Done |
 | Day 1      | May 20 | Project scaffolding + Zustand store | ✅ Done |
-| Day 2      | May 21 | Template Gallery                    | ⬜ Todo |
+| Day 2      | May 21 | Template Gallery                    | ✅ Done |
 | Day 3      | May 22 | Editor layout + Preview             | ⬜ Todo |
 | Day 4      | May 23 | Element Settings                    | ⬜ Todo |
 | Day 5      | May 24 | Page Settings + Integration test    | ⬜ Todo |
