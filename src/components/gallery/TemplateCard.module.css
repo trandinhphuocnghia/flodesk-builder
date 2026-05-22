@@ -1,0 +1,23 @@
+.card {
+  cursor: pointer;
+  transition: transform var(--grn-motion-duration-s);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--grn-motion-duration-s);
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
