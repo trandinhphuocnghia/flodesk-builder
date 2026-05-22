@@ -22,9 +22,7 @@ export function TemplateCard({ template, onSelect }: Props) {
       overflow="hidden"
       radius="var(--grn-card-radius)"
       className={styles.card}
-      onClick={() => onSelect(template)}
     >
-      {/* Thumbnail */}
       <Box
         aspectRatio="4/3"
         position="relative"
@@ -43,7 +41,7 @@ export function TemplateCard({ template, onSelect }: Props) {
         />
 
         <div className={styles.overlay}>
-          <Button>Use this template</Button>
+          <Button onClick={() => onSelect(template)}>Use this template</Button>
         </div>
       </Box>
 
