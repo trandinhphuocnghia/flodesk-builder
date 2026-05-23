@@ -1,4 +1,4 @@
-import { renderElement } from "../../helpers";
+import { renderInternalElement } from "../../helpers";
 import { useBuilderStore } from "../../stores/useBuilderStore";
 import styles from "./Canvas.module.css";
 
@@ -7,7 +7,7 @@ function ElementWrapper({ id }: { id: string }) {
 
   if (!element) return null;
 
-  return renderElement(element);
+  return renderInternalElement(element);
 }
 
 export function Canvas() {
@@ -25,7 +25,7 @@ export function Canvas() {
       >
         {elementOrder.map((id) => {
           if (!id) return null;
-          return <ElementWrapper id={id} />;
+          return <ElementWrapper key={id} id={id} />;
         })}
       </div>
     </div>

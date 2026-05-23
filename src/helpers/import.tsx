@@ -5,14 +5,14 @@ import {
 } from "../components/editor/Elements";
 import type { BuilderElement } from "../types";
 
+//add the new record if we have a new type of Element like: table, video...
 const ELEMENT_REGISTRY: Record<string, React.ElementType> = {
   image: ImageElement,
   title: TitleElement,
   paragraph: ParagraphElement,
-  //add if have new type of Element like: table, video...
 };
 
-export function renderElement(element: BuilderElement) {
+export function renderInternalElement(element: BuilderElement) {
   const Component = ELEMENT_REGISTRY[element.type];
 
   if (!Component) {

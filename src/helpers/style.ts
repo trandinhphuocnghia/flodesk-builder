@@ -10,3 +10,20 @@ export function resolveTextStyles(s: ElementStyles): CSSProperties {
     margin: 0,
   };
 }
+
+export function buildExportTextStyle(
+  styles: ElementStyles,
+  lineHeight: string,
+): string {
+  const { color, fontSize, fontWeight } = styles;
+  return [
+    color ? `color:${color}` : "",
+    fontSize ? `font-size:${fontSize}px` : "",
+    `font-weight:${fontWeight ? FONT_WEIGHT[fontWeight] : 400}`,
+    "margin:0",
+    `line-height:${lineHeight}`,
+    "padding:16px 32px",
+  ]
+    .filter(Boolean)
+    .join(";");
+}
