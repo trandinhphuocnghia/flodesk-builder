@@ -23,7 +23,6 @@
   overflow-y: auto;
 }
 
-/* Tablet (768px+): panel becomes right sidebar */
 @media (min-width: 768px) {
   .body {
     flex-direction: row;
