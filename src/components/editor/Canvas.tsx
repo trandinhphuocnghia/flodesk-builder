@@ -13,9 +13,15 @@ function ElementWrapper({ id }: { id: string }) {
 export function Canvas() {
   const pageSettings = useBuilderStore((state) => state.pageSettings);
   const elementOrder = useBuilderStore((state) => state.elementOrder);
+  const setActivePanelView = useBuilderStore((s) => s.setActivePanelView);
 
   return (
-    <div className={styles.outer}>
+    <div
+      className={styles.outer}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) setActivePanelView(null);
+      }}
+    >
       <div
         className={styles.page}
         style={{

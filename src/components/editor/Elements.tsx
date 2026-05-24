@@ -5,22 +5,41 @@ import type {
 } from "../../types";
 import { resolveTextStyles } from "../../helpers";
 import styles from "./Canvas.module.css";
+import { useElementSelect } from "../../hooks";
+import { Box } from "@flodesk/grain";
+
+const selectableProps = {
+  borderSide: "all",
+  borderColorHover: "blue5",
+  transition: "var(--grn-transition-leave)",
+  transitionHover: "var(--grn-transition-hover)",
+  shadow: "s",
+  shadowHover: "m",
+  position: "relative",
+} as const;
 
 export function ImageElement({ element }: { element: ImageElementType }) {
   return (
-    <div className={styles.element}>
+    <Box data-block-element={element.id}>
       <img src={element.src} alt={element.alt} className={styles.image} />
-    </div>
+    </Box>
   );
 }
 
 export function TitleElement({ element }: { element: TitleElementType }) {
+  const { isSelected, handleClick } = useElementSelect(element.id);
+
   return (
-    <div className={styles.element}>
+    <Box
+      {...selectableProps}
+      onClick={handleClick}
+      data-block-element={element.id}
+      borderColor={isSelected ? "blue5" : undefined}
+    >
       <h1 style={{ ...resolveTextStyles(element.styles), lineHeight: 1.2 }}>
         {element.content}
       </h1>
-    </div>
+    </Box>
   );
 }
 
@@ -29,11 +48,18 @@ export function ParagraphElement({
 }: {
   element: ParagraphElementType;
 }) {
+  const { isSelected, handleClick } = useElementSelect(element.id);
+
   return (
-    <div className={styles.element}>
+    <Box
+      {...selectableProps}
+      onClick={handleClick}
+      data-block-element={element.id}
+      borderColor={isSelected ? "blue5" : undefined}
+    >
       <p style={{ ...resolveTextStyles(element.styles), lineHeight: 1.6 }}>
         {element.content}
       </p>
-    </div>
+    </Box>
   );
 }

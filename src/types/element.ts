@@ -25,4 +25,10 @@ export type ImageElement = {
   alt: string;
 };
 
+export type ElementContents = {
+  content?: string;
+  src?: string;
+  alt?: string;
+};
+
 export type BuilderElement = TitleElement | ParagraphElement | ImageElement;

@@ -1,19 +1,17 @@
-import { Box, Text } from "@flodesk/grain";
 import { Canvas } from "../components/editor/Canvas";
 import styles from "./EditorPage.module.css";
+import { SettingPanel } from "../components/editor/SettingPanel";
+import { Header } from "../components/editor/Header";
 
 export function EditorPage() {
   return (
     <div className={styles.layout}>
+      <Header />
       <div className={styles.body}>
         <Canvas />
 
         <aside className={styles.panel}>
-          <Box padding="l">
-            <Text size="m" color="content3">
-              Settings panel — Day 4
-            </Text>
-          </Box>
+          <SettingPanel />
         </aside>
       </div>
     </div>
