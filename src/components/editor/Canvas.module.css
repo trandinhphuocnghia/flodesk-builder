@@ -12,14 +12,11 @@
 
 .page {
   width: 100%;
+  cursor: pointer;
   height: fit-content;
   background-color: var(--grn-color-background);
   box-shadow: var(--grn-shadow-m);
   overflow: hidden;
-}
-
-.element {
-  position: relative;
 }
 
 .image {
