@@ -1,4 +1,4 @@
-import { Box, Text, Button } from "@flodesk/grain";
+import { Box, Text, Button, getColor } from "@flodesk/grain";
 import type { Template } from "../../types";
 import styles from "./TemplateCard.module.css";
 
@@ -8,49 +8,42 @@ type Props = {
 };
 
 export function TemplateCard({ template, onSelect }: Props) {
-  const thumbnail =
-    template.thumbnail ||
-    `https://placehold.co/400x300/${template.pageSettings.backgroundColor.replace(
-      "#",
-      "",
-    )}/ffffff?text=${encodeURIComponent(template.name)}`;
+  const bgColor = template.pageSettings?.backgroundColor || "#ffffff";
 
   return (
     <Box
-      shadow="s"
-      borderSide="all"
-      overflow="hidden"
-      radius="var(--grn-card-radius)"
-      className={styles.card}
+      cursor="pointer"
+      maxWidth={42}
+      position="relative"
+      className={`grn-card-container ${styles.card}`}
     >
       <Box
-        aspectRatio="4/3"
+        aspectRatio="1/1"
         position="relative"
-        backgroundColor="background2"
-        borderSide="bottom"
+        borderSide="all"
+        borderWidth="1px"
+        borderColor="border"
+        radius="l"
+        shadow="s"
+        shadowHover="m"
+        transition="hover"
+        overflow="hidden"
+        style={{ backgroundColor: getColor(bgColor) }}
       >
-        <img
-          src={thumbnail}
-          alt={template.name}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
-
-        <div className={styles.overlay}>
-          <Button onClick={() => onSelect(template)}>Use this template</Button>
-        </div>
+        <Box className={styles.overlay}>
+          <Button variant="accent" onClick={() => onSelect(template)}>
+            <Text weight="medium">Choose this template</Text>
+          </Button>
+        </Box>
       </Box>
-
-      {/* Info */}
-      <Box padding="var(--grn-card-padding)" backgroundColor="background">
-        <Text color="content2" size="s">
-          PAGE TEMPLATE
+      <Box
+        className="grn-card"
+        padding="var(--grn-card-padding)"
+        backgroundColor="background"
+      >
+        <Text size="l" weight="medium" color="content" trimTop>
+          {template.name}
         </Text>
-        <Text trimTop>{template.name}</Text>
       </Box>
     </Box>
   );

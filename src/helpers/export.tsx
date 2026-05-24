@@ -9,7 +9,7 @@ import type {
   TitleElement,
 } from "../types";
 import { escapeHTML, isSafeUrl } from "../utils";
-import { buildExportTextStyle } from "./style";
+import { buildExportTextStyle, resolveToHex } from "./style";
 
 function renderTitleElement(el: TitleElement) {
   const style = buildExportTextStyle(el.styles, "1.2");
@@ -58,10 +58,10 @@ export function exportHTML(store: BuilderState): string {
   const { pageSettings, elements, elementOrder } = store;
 
   const elementsHTML = elementOrder
-    .map((id) => elements[id])
-    .filter(Boolean)
-    .map(renderExportElement)
-    .join("\n    ");
+     .map((id) => elements[id])
+     .filter(Boolean)
+     .map(renderExportElement)
+     .join("\n    ");
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -79,7 +79,7 @@ export function exportHTML(store: BuilderState): string {
     .page {
       max-width: ${pageSettings.pageWidth}px;
       margin: 0 auto;
-      background-color: ${pageSettings.backgroundColor};
+      background-color: ${resolveToHex(pageSettings.backgroundColor)};
       overflow: hidden;
     }
   </style>
