@@ -1,0 +1,9 @@
+.breadcrumb {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .breadcrumb {
+    display: flex;
+  }
+}
