@@ -14,7 +14,6 @@ const NEUTRALS = [
   "shadeTone1",
   "shadeTone3",
 ];
-
 const SOFT_COLORS = [
   "blue1",
   "blue3",
@@ -25,8 +24,15 @@ const SOFT_COLORS = [
   "green1",
   "green3",
 ];
-
 const DARKS = ["shadeTone13", "shadeTone11", "shadeTone9"];
+const UI_CONFIG = {
+  popoverWidth: "290px",
+  swatchSize: "26px",
+  triggerIconSize: "22px",
+  wheelSize: "28px",
+  wheelGradient:
+    "linear-gradient(45deg, #ff0000, #ff00f0, #00f0ff, #00ff00, #ffff00, #ff0000)",
+};
 
 export function ColorPicker({
   color = "content",
@@ -38,11 +44,6 @@ export function ColorPicker({
   const handleColorSelect = (selectedColor: string) => {
     onChange(selectedColor);
     setIsOpen(false);
-  };
-
-  const handleNativeColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    onChange(value);
   };
 
   const trigger = (
@@ -62,13 +63,13 @@ export function ColorPicker({
       }}
     >
       <Box
-        width="22px"
-        height="22px"
+        width={UI_CONFIG.triggerIconSize}
+        height={UI_CONFIG.triggerIconSize}
         radius="l"
         style={{
           backgroundColor: getColor(color),
-          border: "1px solid rgba(0, 0, 0, 0.08)",
-          boxShadow: "0 1px 2px rgba(0, 0, 0, 0.04)",
+          border: "1px solid var(--grn-color-border, rgba(0,0,0,0.06))",
+          boxShadow: "0 1px 2px var(--grn-color-border, rgba(0,0,0,0.04))",
           flexShrink: 0,
         }}
       />
@@ -92,11 +93,7 @@ export function ColorPicker({
   ) => {
     return (
       <Box>
-        <Text
-          size="s"
-          color="content3"
-          style={{ fontSize: "10px", letterSpacing: "0.05em" }}
-        >
+        <Text size="s" color="content3">
           {title}
         </Text>
         <Box
@@ -109,8 +106,8 @@ export function ColorPicker({
             return (
               <Box
                 key={token}
-                width="26px"
-                height="26px"
+                width={UI_CONFIG.swatchSize}
+                height={UI_CONFIG.swatchSize}
                 radius="l"
                 cursor="pointer"
                 role="button"
@@ -124,10 +121,13 @@ export function ColorPicker({
                 }}
                 style={{
                   backgroundColor: getColor(token),
+                  // Tối ưu dùng CSS variables thay vì màu cứng
                   border: isSelected
                     ? "2.5px solid var(--grn-color-border2, #000000)"
-                    : "1px solid rgba(0, 0, 0, 0.08)",
-                  boxShadow: isSelected ? "0 0 0 1px #ffffff inset" : "none",
+                    : "1px solid var(--grn-color-border, rgba(0,0,0,0.08))",
+                  boxShadow: isSelected
+                    ? "0 0 0 1px var(--grn-color-background, #ffffff) inset"
+                    : "none",
                   outline: "none",
                 }}
               />
@@ -145,11 +145,10 @@ export function ColorPicker({
         onClose={() => setIsOpen(false)}
         trigger={trigger}
         placement="bottomStart"
-        width="290px"
+        width={UI_CONFIG.popoverWidth}
         padding="m"
       >
         <Box padding="xs">
-          {/* Preset Swatches Section */}
           <Text size="s" color="content2" weight="medium">
             PRESET COLORS
           </Text>
@@ -168,27 +167,22 @@ export function ColorPicker({
             }}
           />
 
-          {/* Custom Selector Section */}
           <Box
             position="relative"
             paddingTop="xs"
             style={{ display: "flex", alignItems: "center", gap: "10px" }}
           >
-            {/* Visual Color Wheel circle trigger for native picker */}
             <Box
-              width="28px"
-              height="28px"
+              width={UI_CONFIG.wheelSize}
+              height={UI_CONFIG.wheelSize}
               radius="l"
               style={{
-                background:
-                  "linear-gradient(45deg, #ff0000, #ff00f0, #00f0ff, #00ff00, #ffff00, #ff0000)",
-                border: "1px solid rgba(0, 0, 0, 0.12)",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                background: UI_CONFIG.wheelGradient,
+                border: "1px solid var(--grn-color-border, rgba(0,0,0,0.12))",
                 flexShrink: 0,
                 position: "relative",
               }}
             >
-              {/* Inner active color dot */}
               <Box
                 width="12px"
                 height="12px"
@@ -199,7 +193,7 @@ export function ColorPicker({
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                   backgroundColor: getColor(color),
-                  border: "2.5px solid #ffffff",
+                  border: "2.5px solid var(--grn-color-background, #ffffff)",
                   boxShadow: "0 1px 2px rgba(0,0,0,0.15)",
                 }}
               />
@@ -212,7 +206,7 @@ export function ColorPicker({
             <input
               type="color"
               value={getColor(color)}
-              onChange={handleNativeColorChange}
+              onChange={(e) => onChange(e.target.value)}
               style={{
                 position: "absolute",
                 top: 0,
