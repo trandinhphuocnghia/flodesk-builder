@@ -3,10 +3,12 @@ import { useBuilderStore } from "../../stores/useBuilderStore";
 import { PageSetting } from "./PageSetting";
 import { ParagraphSetting } from "./ParagraphSetting";
 import { TitleSetting } from "./TitleSetting";
+import { ImageSetting } from "./ImageSetting";
 
 const ELEMENT_SETTINGS_REGISTRY: Record<string, React.ElementType> = {
   title: TitleSetting,
   paragraph: ParagraphSetting,
+  image: ImageSetting,
 };
 
 const ElementSettingWrapper = ({ id }: { id: string }) => {

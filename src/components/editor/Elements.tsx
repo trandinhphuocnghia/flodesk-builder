@@ -9,18 +9,37 @@ import { useElementSelect } from "../../hooks";
 import { Box } from "@flodesk/grain";
 
 const selectableProps = {
-  borderSide: "all",
-  borderColorHover: "blue5",
   transition: "var(--grn-transition-leave)",
   transitionHover: "var(--grn-transition-hover)",
-  shadow: "s",
-  shadowHover: "m",
   position: "relative",
 } as const;
 
 export function ImageElement({ element }: { element: ImageElementType }) {
+  const { isSelected, handleClick } = useElementSelect(element.id);
+
+  const widthPercent = element.styles?.widthPercent ?? 100;
+  const align = element.styles?.align ?? "center";
+
+  const alignToMargin: Record<
+    string,
+    { marginLeft: string; marginRight: string }
+  > = {
+    center: { marginLeft: "auto", marginRight: "auto" },
+    left: { marginLeft: "0", marginRight: "auto" },
+    right: { marginLeft: "auto", marginRight: "0" },
+  };
+
   return (
-    <Box data-block-element={element.id}>
+    <Box
+      {...selectableProps}
+      onClick={handleClick}
+      data-block-element={element.id}
+      className={`${styles.elementWrapper} ${isSelected ? styles.selected : ""}`}
+      style={{
+        width: `${widthPercent}%`,
+        ...alignToMargin[align],
+      }}
+    >
       <img src={element.src} alt={element.alt} className={styles.image} />
     </Box>
   );
@@ -34,7 +53,7 @@ export function TitleElement({ element }: { element: TitleElementType }) {
       {...selectableProps}
       onClick={handleClick}
       data-block-element={element.id}
-      borderColor={isSelected ? "blue5" : undefined}
+      className={`${styles.elementWrapper} ${isSelected ? styles.selected : ""}`}
     >
       <h1 style={{ ...resolveTextStyles(element.styles), lineHeight: 1.2 }}>
         {element.content}
@@ -55,7 +74,7 @@ export function ParagraphElement({
       {...selectableProps}
       onClick={handleClick}
       data-block-element={element.id}
-      borderColor={isSelected ? "blue5" : undefined}
+      className={`${styles.elementWrapper} ${isSelected ? styles.selected : ""}`}
     >
       <p style={{ ...resolveTextStyles(element.styles), lineHeight: 1.6 }}>
         {element.content}

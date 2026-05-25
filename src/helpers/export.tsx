@@ -18,11 +18,22 @@ function renderTitleElement(el: TitleElement) {
 }
 
 function renderImageElement(el: ImageElement) {
-  const { src, alt } = el;
-  const safetySrc = isSafeUrl(src) ? src : "";
-  const safetyAlt = escapeHTML(alt);
+  const { src, alt, styles } = el;
+  const safeSrc = isSafeUrl(src) ? src : "";
+  const safeAlt = escapeHTML(alt);
 
-  return `<img src="${safetySrc}" alt="${safetyAlt}" style="display:block;width:100%;height:auto;" />`;
+  const widthPercent = styles?.widthPercent ?? 100;
+  const align = styles?.align ?? "center";
+
+  const alignToMargin: Record<string, string> = {
+    center: "auto",
+    left: "0 auto 0 0",
+    right: "0 0 0 auto",
+  };
+
+  const margin = alignToMargin[align];
+
+  return `<div style="width:${widthPercent}%;margin:${margin};"><img src="${safeSrc}" alt="${safeAlt}" style="display:block;width:100%;height:auto;" /></div>`;
 }
 
 function renderParagraphElement(el: ParagraphElement): string {
@@ -72,7 +83,7 @@ export function exportHTML(store: BuilderState): string {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <style>
+ <style>
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
@@ -80,6 +91,10 @@ export function exportHTML(store: BuilderState): string {
       background-color: #e8e8e8;
       font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, h5, h6, p {
+      margin: 0;
+      padding: 0;
     }
     .page {
       max-width: ${pageSettings.pageWidth}px;
