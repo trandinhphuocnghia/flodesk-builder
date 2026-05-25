@@ -6,22 +6,46 @@
   background-color: var(--grn-color-background3);
   display: flex;
   justify-content: center;
-
-  padding: var(--grn-space-l2) var(--grn-space-l) 120px var(--grn-space-l);
+  padding: var(--grn-space-l2) var(--grn-space-l) calc(var(--grn-space-xxl) * 2)
+    var(--grn-space-l);
   box-sizing: border-box;
 }
 
 .page {
+  position: relative;
   width: 100%;
   cursor: pointer;
   height: fit-content;
   background-color: var(--grn-color-background);
-  box-shadow: var(--grn-shadow-m);
-
   border-radius: var(--grn-radius-s);
-  min-height: 800px;
-
   overflow: hidden;
+
+  box-shadow: var(--grn-shadow-m);
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+
+  pointer-events: none;
+
+  box-shadow: inset 0 0 0 2px transparent;
+  transition: box-shadow 0.2s ease;
+  z-index: 10; /* Đảm bảo luôn nằm trên cùng */
+}
+
+.page:hover:not(:has(.elementWrapper:hover))::after {
+  box-shadow: inset 0 0 0 2px var(--grn-color-blue2);
+}
+
+.page.active::after,
+.page.active:hover::after {
+  box-shadow: inset 0 0 0 2px var(--grn-color-blue5);
 }
 
 .image {
@@ -33,4 +57,19 @@
 
 .element:not(:has(img)) {
   padding: var(--grn-space-m) var(--grn-space-l2);
+}
+
+.elementWrapper {
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  transition: outline-color 0.2s ease;
+  cursor: pointer;
+}
+
+.elementWrapper:hover {
+  outline-color: var(--grn-color-blue2);
+}
+
+.elementWrapper.selected {
+  outline-color: var(--grn-color-blue5);
 }

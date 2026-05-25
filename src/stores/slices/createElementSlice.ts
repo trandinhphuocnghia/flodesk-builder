@@ -33,7 +33,7 @@ export const createElementSlice: StateCreator<ElementSlice> = (set) => ({
           [id]: {
             ...element,
             styles: { ...element.styles, ...newStyles },
-          },
+          } as BuilderElement,
         },
       };
     }),

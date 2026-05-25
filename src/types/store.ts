@@ -1,5 +1,10 @@
 import type { PageSettings } from "./page";
-import type { BuilderElement, ElementContents, ElementStyles } from "./element";
+import type {
+  BuilderElement,
+  ElementContents,
+  ImageStyles,
+  TextStyles,
+} from "./element";
 import type { Template } from "./template";
 
 export type BuilderState = {
@@ -20,7 +25,10 @@ export type BuilderActions = {
 
   updatePageSettings: (updates: Partial<PageSettings>) => void;
   updateElement: (id: string, updates: ElementContents) => void;
-  updateElementStyles: (id: string, updates: ElementStyles) => void;
+  updateElementStyles: (
+    id: string,
+    updates: Partial<TextStyles | ImageStyles>,
+  ) => void;
 };
 
 export type BuilderStore = BuilderState & BuilderActions;

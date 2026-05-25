@@ -15,6 +15,10 @@ export const templates: Template[] = [
         type: "image",
         src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
         alt: "Hero image",
+        styles: {
+          widthPercent: 100,
+          align: "left",
+        },
       },
       "title-1": {
         id: "title-1",
@@ -54,6 +58,10 @@ export const templates: Template[] = [
         type: "image",
         src: "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?w=800",
         alt: "Hero image",
+        styles: {
+          widthPercent: 100,
+          align: "left",
+        },
       },
       "title-1": {
         id: "title-1",
@@ -103,6 +111,10 @@ export const templates: Template[] = [
         type: "image",
         src: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800",
         alt: "Lifestyle image",
+        styles: {
+          widthPercent: 100,
+          align: "left",
+        },
       },
       "paragraph-1": {
         id: "paragraph-1",
@@ -131,6 +143,10 @@ export const templates: Template[] = [
         type: "image",
         src: "https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=800",
         alt: "Nature image",
+        styles: {
+          widthPercent: 100,
+          align: "left",
+        },
       },
       "title-1": {
         id: "title-1",
@@ -190,6 +206,10 @@ export const templates: Template[] = [
         type: "image",
         src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800",
         alt: "Event gathering",
+        styles: {
+          widthPercent: 100,
+          align: "left",
+        },
       },
     },
     elementOrder: ["title-1", "paragraph-1", "image-1"],
@@ -208,6 +228,10 @@ export const templates: Template[] = [
         type: "image",
         src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
         alt: "Sunny beach",
+        styles: {
+          widthPercent: 100,
+          align: "left",
+        },
       },
       "title-1": {
         id: "title-1",
