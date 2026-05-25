@@ -1,6 +1,7 @@
-import { Box, Slider, Text, Textarea } from "@flodesk/grain";
+import { Box, Flex, Text, Slider, Textarea } from "@flodesk/grain";
 import { useBuilderStore } from "../../stores/useBuilderStore";
 import type { ParagraphElement } from "../../types";
+import { ColorPicker } from "./ColorPicker";
 
 interface Props {
   element: ParagraphElement;
@@ -11,13 +12,43 @@ export function ParagraphSetting({ element }: Props) {
   const updateElement = useBuilderStore((s) => s.updateElement);
 
   return (
-    <Box padding="l">
-      <Text size="m" weight="medium">
-        Paragraph Settings
-      </Text>
-      <Box paddingTop="l">
+    <Flex direction="column" gap="l" padding="l" style={{ width: "100%" }}>
+      <Box width="100%">
+        <Text size="l" weight="bold" color="content">
+          Paragraph Settings
+        </Text>
+        <Box
+          borderSide="bottom"
+          borderWidth="1px"
+          borderColor="border"
+          paddingTop="xs"
+          width="100%"
+        />
+      </Box>
+
+      <Flex direction="column" gap="xs" width="100%">
+        <Text size="s" weight="medium" color="content2">
+          Color
+        </Text>
+        <ColorPicker
+          color={element.styles.color}
+          onChange={(color) => {
+            updateElementStyles(element.id, { color });
+          }}
+          label="Paragraph Color"
+        />
+      </Flex>
+
+      <Flex direction="column" gap="xs" width="100%">
+        <Flex direction="row" justifyContent="space-between" alignItems="center" width="100%">
+          <Text size="s" weight="medium" color="content2">
+            Font size
+          </Text>
+          <Text size="s" weight="medium" color="content3">
+            {element.styles.fontSize}px
+          </Text>
+        </Flex>
         <Slider
-          label={`Fontsize: ${element.styles.fontSize}px`}
           min={8}
           max={24}
           step={2}
@@ -28,18 +59,22 @@ export function ParagraphSetting({ element }: Props) {
             });
           }}
         />
-      </Box>
-      <Box paddingTop="l">
+      </Flex>
+
+      <Flex direction="column" gap="xs" width="100%">
+        <Text size="s" weight="medium" color="content2">
+          Paragraph Content
+        </Text>
         <Textarea
-          label="Title Content"
           onChange={(e) =>
             updateElement(element.id, {
               content: e.target.value,
             })
           }
           value={element.content}
+          style={{ minHeight: "120px", width: "100%" }}
         />
-      </Box>
-    </Box>
+      </Flex>
+    </Flex>
   );
 }
