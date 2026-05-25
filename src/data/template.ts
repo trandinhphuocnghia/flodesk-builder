@@ -187,7 +187,7 @@ export const templates: Template[] = [
         content: "You're Invited",
         styles: {
           color: "#e0e1dd",
-          fontSize: 48,
+          fontSize: 36,
           fontWeight: "Bold",
         },
       },
