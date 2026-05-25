@@ -58,10 +58,10 @@ export function exportHTML(store: BuilderState): string {
   const { pageSettings, elements, elementOrder } = store;
 
   const elementsHTML = elementOrder
-     .map((id) => elements[id])
-     .filter(Boolean)
-     .map(renderExportElement)
-     .join("\n    ");
+    .map((id) => elements[id])
+    .filter(Boolean)
+    .map(renderExportElement)
+    .join("\n    ");
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -69,12 +69,17 @@ export function exportHTML(store: BuilderState): string {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
       padding: 32px 16px;
       background-color: #e8e8e8;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
     .page {
       max-width: ${pageSettings.pageWidth}px;

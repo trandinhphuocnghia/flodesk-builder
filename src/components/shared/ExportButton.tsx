@@ -1,6 +1,7 @@
 import { IconArrowRight, TextButton } from "@flodesk/grain";
 import { useBuilderStore } from "../../stores/useBuilderStore";
 import { exportHTML } from "../../helpers";
+import { downloadHTML } from "../../utils";
 
 export function ExportButton() {
   const isSaving = useBuilderStore((state) => state.isSaving);
@@ -8,7 +9,7 @@ export function ExportButton() {
   function handleNext() {
     const store = useBuilderStore.getState();
     const html = exportHTML(store);
-    console.log(html);
+    downloadHTML("my-template.html", html);
   }
 
   return (
