@@ -15,29 +15,53 @@ export function GalleryPage() {
   }
 
   return (
-    <Box padding="l" className="grn-context">
-      <Box paddingBottom="xl">
-        <Text size="xl" weight="medium">
-          Choose a template to start
-        </Text>
-      </Box>
+    <Box
+      padding="xl"
+      minHeight="100vh"
+      backgroundColor="background2"
+      className="grn-context"
+    >
+      <Box maxWidth="1100px" style={{ margin: "0 auto" }}>
+        <Box
+          paddingTop="xxl"
+          paddingBottom="xxl"
+          style={{ textAlign: "center" }}
+        >
+          <Text
+            size="xxl"
+            weight="bold"
+            color="content"
+            style={{ fontSize: "42px", lineHeight: "1.2" }}
+          >
+            Choose a starting point
+          </Text>
+          <Box paddingTop="s">
+            <Text size="m" color="content3">
+              Select a template to customize or start with a clean slate.
+            </Text>
+          </Box>
+        </Box>
 
-      <Arrange
-        columns={{
-          mobile: "1fr",
-          tablet: "repeat(2, 1fr)",
-          default: "repeat(3, 1fr)",
-        }}
-        gap={{ default: "l" }}
-      >
-        {templates.map((template) => (
-          <TemplateCard
-            key={template.id}
-            template={template}
-            onSelect={handleSelect}
-          />
-        ))}
-      </Arrange>
+        <Arrange
+          columns={{
+            mobile: "1fr",
+            tablet: "repeat(2, 1fr)",
+            default: "repeat(4, 1fr)",
+          }}
+          gap={{
+            mobile: "l",
+            default: "xl",
+          }}
+        >
+          {templates.map((template) => (
+            <TemplateCard
+              key={template.id}
+              template={template}
+              onSelect={handleSelect}
+            />
+          ))}
+        </Arrange>
+      </Box>
     </Box>
   );
 }

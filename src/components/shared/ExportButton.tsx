@@ -1,4 +1,4 @@
-import { IconArrowRight, TextButton } from "@flodesk/grain";
+import { Button, Text } from "@flodesk/grain";
 import { useBuilderStore } from "../../stores/useBuilderStore";
 import { exportHTML } from "../../helpers";
 import { downloadHTML } from "../../utils";
@@ -13,13 +13,10 @@ export function ExportButton() {
   }
 
   return (
-    <TextButton
-      onClick={handleNext}
-      icon={<IconArrowRight />}
-      iconPosition="right"
-      disabled={isSaving}
-    >
-      Export
-    </TextButton>
+    <Button variant="accent" onClick={handleNext} disabled={isSaving}>
+      <Text weight="medium" color="inverse">
+        Export
+      </Text>
+    </Button>
   );
 }
