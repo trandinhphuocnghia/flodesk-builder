@@ -20,7 +20,7 @@ export type BuilderState = {
 export type BuilderActions = {
   setTemplate: (template: Template) => void;
   setActivePanelView: (view: BuilderState["activePanelView"]) => void;
-  setActiveElementId: (id: string) => void;
+  setActiveElementId: (id: string | null) => void;
   setIsSaving: (status: boolean) => void;
 
   updatePageSettings: (updates: Partial<PageSettings>) => void;

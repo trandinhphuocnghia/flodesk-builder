@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Slider, Textarea } from "@flodesk/grain";
+import { Box, Flex, Text, Slider, Textarea, TextToggle, TextToggleGroup } from "@flodesk/grain";
 import { useBuilderStore } from "../../stores/useBuilderStore";
 import type { ParagraphElement } from "../../types";
 import { ColorPicker } from "./ColorPicker";
@@ -50,7 +50,7 @@ export function ParagraphSetting({ element }: Props) {
         </Flex>
         <Slider
           min={8}
-          max={24}
+          max={48}
           step={2}
           value={element.styles.fontSize}
           onChange={(e) => {
@@ -59,6 +59,23 @@ export function ParagraphSetting({ element }: Props) {
             });
           }}
         />
+      </Flex>
+
+      <Flex direction="column" gap="xs" width="100%">
+        <Text size="s" weight="medium" color="content2">
+          Font weight
+        </Text>
+        <TextToggleGroup hasFullWidth>
+          {(["Light", "Regular", "Bold"] as const).map((w) => (
+            <TextToggle
+              key={w}
+              isActive={element.styles.fontWeight === w}
+              onClick={() => updateElementStyles(element.id, { fontWeight: w })}
+            >
+              {w}
+            </TextToggle>
+          ))}
+        </TextToggleGroup>
       </Flex>
 
       <Flex direction="column" gap="xs" width="100%">
