@@ -1,11 +1,11 @@
+import { resolveTextStyles } from "../../../helpers";
+import { useElementSelect } from "../../../hooks";
 import type {
   ImageElement as ImageElementType,
   TitleElement as TitleElementType,
   ParagraphElement as ParagraphElementType,
-} from "../../types";
-import { resolveTextStyles } from "../../helpers";
+} from "../../../types";
 import styles from "./Canvas.module.css";
-import { useElementSelect } from "../../hooks";
 import { Box } from "@flodesk/grain";
 
 const selectableProps = {

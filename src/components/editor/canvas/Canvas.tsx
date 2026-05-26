@@ -1,4 +1,4 @@
-import { useBuilderStore } from "../../stores/useBuilderStore";
+import { useBuilderStore } from "../../../stores/useBuilderStore";
 import styles from "./Canvas.module.css";
 import { Page } from "./Page";
 

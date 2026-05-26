@@ -1,5 +1,5 @@
-import { useBuilderStore } from "../../stores/useBuilderStore";
-import { renderInternalElement } from "../../helpers";
+import { renderInternalElement } from "../../../helpers";
+import { useBuilderStore } from "../../../stores/useBuilderStore";
 import styles from "./Canvas.module.css";
 import { getColor } from "@flodesk/grain";
 

@@ -1,6 +1,14 @@
-import { Box, Flex, Text, Slider, TextInput, TextToggle, TextToggleGroup } from "@flodesk/grain";
-import { useBuilderStore } from "../../stores/useBuilderStore";
-import type { TitleElement } from "../../types";
+import {
+  Box,
+  Flex,
+  Text,
+  Slider,
+  TextInput,
+  TextToggle,
+  TextToggleGroup,
+} from "@flodesk/grain";
+import type { TitleElement } from "../../../types";
+import { useBuilderStore } from "../../../stores/useBuilderStore";
 import { ColorPicker } from "./ColorPicker";
 
 interface TitleSettingProps {
@@ -18,7 +26,13 @@ export function TitleSetting({ element }: TitleSettingProps) {
         <Text size="l" weight="bold" color="content">
           Title Settings
         </Text>
-        <Box borderSide="bottom" borderWidth="1px" borderColor="border" paddingTop="xs" width="100%" />
+        <Box
+          borderSide="bottom"
+          borderWidth="1px"
+          borderColor="border"
+          paddingTop="xs"
+          width="100%"
+        />
       </Box>
 
       {/* Color Setting Group */}
@@ -37,7 +51,12 @@ export function TitleSetting({ element }: TitleSettingProps) {
 
       {/* Font Size Setting Group */}
       <Flex direction="column" gap="xs" width="100%">
-        <Flex direction="row" justifyContent="space-between" alignItems="center" width="100%">
+        <Flex
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
           <Text size="s" weight="medium" color="content2">
             Font size
           </Text>

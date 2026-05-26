@@ -1,6 +1,14 @@
-import { Box, Flex, Text, Slider, Textarea, TextToggle, TextToggleGroup } from "@flodesk/grain";
-import { useBuilderStore } from "../../stores/useBuilderStore";
-import type { ParagraphElement } from "../../types";
+import {
+  Box,
+  Flex,
+  Text,
+  Slider,
+  Textarea,
+  TextToggle,
+  TextToggleGroup,
+} from "@flodesk/grain";
+import type { ParagraphElement } from "../../../types";
+import { useBuilderStore } from "../../../stores/useBuilderStore";
 import { ColorPicker } from "./ColorPicker";
 
 interface Props {
@@ -40,7 +48,12 @@ export function ParagraphSetting({ element }: Props) {
       </Flex>
 
       <Flex direction="column" gap="xs" width="100%">
-        <Flex direction="row" justifyContent="space-between" alignItems="center" width="100%">
+        <Flex
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
           <Text size="s" weight="medium" color="content2">
             Font size
           </Text>
