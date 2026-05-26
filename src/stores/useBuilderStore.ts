@@ -11,9 +11,12 @@ type BuilderPersistedState = Pick<
 >;
 
 let lastStringifiedState = "";
+let lastTemplateId: string | null = null;
+
 const debouncedSetItem = createDebouncedSetItem((status) =>
   useBuilderStore.getState().setIsSaving(status),
 );
+
 const persisConfig: PersistOptions<BuilderStore, BuilderPersistedState> = {
   name: STORAGE_KEY,
   partialize: (state) => ({
@@ -26,18 +29,36 @@ const persisConfig: PersistOptions<BuilderStore, BuilderPersistedState> = {
   storage: {
     getItem: (name) => {
       const str = localStorage.getItem(name);
-      return str ? JSON.parse(str) : null;
+      if (str) {
+        const parsed = JSON.parse(str);
+        lastTemplateId = parsed.state?.templateId ?? null;
+        lastStringifiedState = JSON.stringify(parsed);
+        return parsed;
+      }
+      return null;
     },
     setItem: (name, value) => {
       const stringifiedValue = JSON.stringify(value);
 
       if (stringifiedValue === lastStringifiedState) return;
 
+      const currentTemplateId = value.state?.templateId ?? null;
+      const isTemplateSwitch = currentTemplateId !== lastTemplateId;
+
+      lastTemplateId = currentTemplateId;
       lastStringifiedState = stringifiedValue;
 
-      debouncedSetItem(name, stringifiedValue);
+      if (isTemplateSwitch) {
+        localStorage.setItem(name, stringifiedValue);
+      } else {
+        debouncedSetItem(name, stringifiedValue);
+      }
     },
-    removeItem: (name) => localStorage.removeItem(name),
+    removeItem: (name) => {
+      lastTemplateId = null;
+      lastStringifiedState = "";
+      localStorage.removeItem(name);
+    },
   },
 };
 
