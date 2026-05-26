@@ -73,7 +73,6 @@ export function buildExportTextStyle(
     `font-weight:${fontWeight ? FONT_WEIGHT[fontWeight] : 400}`,
     "margin:0",
     `line-height:${lineHeight}`,
-    "padding:16px 32px",
   ]
     .filter(Boolean)
     .join(";");

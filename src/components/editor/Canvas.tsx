@@ -4,12 +4,16 @@ import { Page } from "./Page";
 
 export function Canvas() {
   const setActivePanelView = useBuilderStore((s) => s.setActivePanelView);
+  const setActiveElementId = useBuilderStore((s) => s.setActiveElementId);
 
   return (
     <div
       className={styles.outer}
       onClick={(e) => {
-        if (e.target === e.currentTarget) setActivePanelView(null);
+        if (e.target === e.currentTarget) {
+          setActivePanelView(null);
+          setActiveElementId(null);
+        }
       }}
     >
       <Page />

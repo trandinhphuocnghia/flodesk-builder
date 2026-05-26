@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Slider, TextInput } from "@flodesk/grain";
+import { Box, Flex, Text, Slider, TextInput, TextToggle, TextToggleGroup } from "@flodesk/grain";
 import { useBuilderStore } from "../../stores/useBuilderStore";
 import type { TitleElement } from "../../types";
 import { ColorPicker } from "./ColorPicker";
@@ -47,7 +47,7 @@ export function TitleSetting({ element }: TitleSettingProps) {
         </Flex>
         <Slider
           min={8}
-          max={36}
+          max={72}
           step={2}
           value={element.styles.fontSize}
           onChange={(e) => {
@@ -56,6 +56,24 @@ export function TitleSetting({ element }: TitleSettingProps) {
             });
           }}
         />
+      </Flex>
+
+      {/* Font Weight Setting Group */}
+      <Flex direction="column" gap="xs" width="100%">
+        <Text size="s" weight="medium" color="content2">
+          Font weight
+        </Text>
+        <TextToggleGroup hasFullWidth>
+          {(["Light", "Regular", "Bold"] as const).map((w) => (
+            <TextToggle
+              key={w}
+              isActive={element.styles.fontWeight === w}
+              onClick={() => updateElementStyles(element.id, { fontWeight: w })}
+            >
+              {w}
+            </TextToggle>
+          ))}
+        </TextToggleGroup>
       </Flex>
 
       {/* Title Content Group */}

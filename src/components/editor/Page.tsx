@@ -28,7 +28,7 @@ export function Page() {
       onClick={(e) => {
         e.stopPropagation();
         setActivePanelView("page");
-        setActiveElementId("");
+        setActiveElementId(null);
       }}
     >
       {elementOrder.map((id) => {

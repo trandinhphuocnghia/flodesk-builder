@@ -16,8 +16,8 @@ export const templates: Template[] = [
         src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
         alt: "Hero image",
         styles: {
-          widthPercent: 100,
-          align: "left",
+          widthPercent: 50,
+          align: "center",
         },
       },
       "title-1": {
@@ -59,8 +59,8 @@ export const templates: Template[] = [
         src: "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?w=800",
         alt: "Hero image",
         styles: {
-          widthPercent: 100,
-          align: "left",
+          widthPercent: 80,
+          align: "right",
         },
       },
       "title-1": {

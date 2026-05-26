@@ -36,7 +36,7 @@
 
   box-shadow: inset 0 0 0 2px transparent;
   transition: box-shadow 0.2s ease;
-  z-index: 10; /* Đảm bảo luôn nằm trên cùng */
+  z-index: 10;
 }
 
 .page:hover:not(:has(.elementWrapper:hover))::after {
