@@ -1,6 +1,3 @@
-/**
- * NOTES: Following the Planning design: Pure JavaScript string interpolation engine, element node mapping, and design token translation layer.
- */
 import type {
   BuilderElement,
   BuilderState,
@@ -21,16 +18,13 @@ function renderImageElement(el: ImageElement) {
   const { src, alt, styles } = el;
   const safeSrc = isSafeUrl(src) ? src : "";
   const safeAlt = escapeHTML(alt);
-
   const widthPercent = styles?.widthPercent ?? 100;
   const align = styles?.align ?? "center";
-
   const alignToMargin: Record<string, string> = {
     center: "auto",
     left: "0 auto 0 0",
     right: "0 0 0 auto",
   };
-
   const margin = alignToMargin[align];
 
   return `<div style="width:${widthPercent}%;margin:${margin};"><img src="${safeSrc}" alt="${safeAlt}" style="display:block;width:100%;height:auto;" /></div>`;

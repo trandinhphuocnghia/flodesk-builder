@@ -3,15 +3,14 @@ import { getColor } from "@flodesk/grain";
 import type { ElementStyles } from "../types";
 import { FONT_WEIGHT } from "../constants";
 
-
 export function resolveToHex(colorStr: string): string {
   if (!colorStr) return "#ffffff";
-  
+
   // 1. Validate and return if already a 6-digit hex
   if (/^#[0-9A-F]{6}$/i.test(colorStr)) {
     return colorStr.toLowerCase();
   }
-  
+
   // 2. Expand and validate if a 3-digit hex
   if (/^#[0-9A-F]{3}$/i.test(colorStr)) {
     const r = colorStr[1];
@@ -30,16 +29,19 @@ export function resolveToHex(colorStr: string): string {
       temp.style.color = getColor(colorStr);
       temp.style.display = "none";
       document.body.appendChild(temp);
-      
+
       const computed = window.getComputedStyle(temp).color;
       document.body.removeChild(temp);
 
-      const match = computed.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)$/i);
+      const match = computed.match(
+        /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)$/i,
+      );
       if (match) {
         const r = parseInt(match[1], 10);
         const g = parseInt(match[2], 10);
         const b = parseInt(match[3], 10);
-        const resolved = "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
+        const resolved =
+          "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
         if (/^#[0-9A-F]{6}$/i.test(resolved)) {
           return resolved.toLowerCase();
         }
@@ -49,7 +51,6 @@ export function resolveToHex(colorStr: string): string {
     }
   }
 
-  // 4. Ultimate secure fallback
   return "#ffffff";
 }
 
@@ -77,4 +78,3 @@ export function buildExportTextStyle(
     .filter(Boolean)
     .join(";");
 }
-

@@ -121,7 +121,6 @@ export function ColorPicker({
                 }}
                 style={{
                   backgroundColor: getColor(token),
-                  // Tối ưu dùng CSS variables thay vì màu cứng
                   border: isSelected
                     ? "2.5px solid var(--grn-color-border2, #000000)"
                     : "1px solid var(--grn-color-border, rgba(0,0,0,0.08))",
