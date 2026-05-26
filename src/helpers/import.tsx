@@ -2,7 +2,7 @@ import {
   ImageElement,
   ParagraphElement,
   TitleElement,
-} from "../components/editor/Elements";
+} from "../components/editor/canvas/Elements";
 import type { BuilderElement } from "../types";
 
 //add the new record if we have a new type of Element like: table, video...

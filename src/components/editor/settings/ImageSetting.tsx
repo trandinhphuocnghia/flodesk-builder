@@ -6,8 +6,8 @@ import {
   TextToggle,
   TextToggleGroup,
 } from "@flodesk/grain";
-import { useBuilderStore } from "../../stores/useBuilderStore";
-import type { ImageElement } from "../../types";
+import { useBuilderStore } from "../../../stores/useBuilderStore";
+import type { ImageElement } from "../../../types";
 
 interface Props {
   element: ImageElement;

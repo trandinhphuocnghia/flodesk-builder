@@ -1,9 +1,9 @@
 import { Box, Flex, IconPencil, Text } from "@flodesk/grain";
-import { useBuilderStore } from "../../stores/useBuilderStore";
+import { useBuilderStore } from "../../../stores/useBuilderStore";
 import { PageSetting } from "./PageSetting";
 import { ParagraphSetting } from "./ParagraphSetting";
-import { TitleSetting } from "./TitleSetting";
 import { ImageSetting } from "./ImageSetting";
+import { TitleSetting } from "./TitleSetting";
 
 const ELEMENT_SETTINGS_REGISTRY: Record<string, React.ElementType> = {
   title: TitleSetting,

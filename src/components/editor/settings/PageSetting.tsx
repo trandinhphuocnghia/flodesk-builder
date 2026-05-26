@@ -1,10 +1,12 @@
 import { Box, Flex, Slider, Text } from "@flodesk/grain";
-import { useBuilderStore } from "../../stores/useBuilderStore";
+import { useBuilderStore } from "../../../stores/useBuilderStore";
 import { ColorPicker } from "./ColorPicker";
 
 export function PageSetting() {
   const pageWidth = useBuilderStore((s) => s.pageSettings.pageWidth);
-  const backgroundColor = useBuilderStore((s) => s.pageSettings.backgroundColor);
+  const backgroundColor = useBuilderStore(
+    (s) => s.pageSettings.backgroundColor,
+  );
   const updatePageSettings = useBuilderStore((s) => s.updatePageSettings);
 
   return (
@@ -39,7 +41,12 @@ export function PageSetting() {
 
       {/* Page Width Setting Group */}
       <Flex direction="column" gap="xs" width="100%">
-        <Flex direction="row" justifyContent="space-between" alignItems="center" width="100%">
+        <Flex
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
           <Text size="s" weight="medium" color="content2">
             Page width
           </Text>

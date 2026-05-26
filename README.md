@@ -10,7 +10,7 @@ A browser-based page builder where non-technical users can browse templates, cus
 
 ## Live Demo
 
-🔗 [Coming soon]
+🔗 [https://flodesk-builder-bice.vercel.app/]
 
 ---
 
@@ -61,17 +61,3 @@ src/
 🔗 [View full planning doc](https://docs.google.com/document/d/1lszNqTcN-pQBEX0gCchfamVDr2Pt8rfz6yU94DmRAsw/edit?tab=t.0#heading=h.t7p40hwj0sgs)
 
 ---
-
-## Progress Log
-
-| Day        | Date   | Task                                | Status  |
-| ---------- | ------ | ----------------------------------- | ------- |
-| Pre-Sprint | May 19 | Architecture planning + document    | ✅ Done |
-| Day 1      | May 20 | Project scaffolding + Zustand store | ✅ Done |
-| Day 2      | May 21 | Template Gallery                    | ✅ Done |
-| Day 3      | May 22 | Editor layout + Preview             | ⬜ Todo |
-| Day 4      | May 23 | Element Settings                    | ⬜ Todo |
-| Day 5      | May 24 | Page Settings + Integration test    | ⬜ Todo |
-| Day 6      | May 25 | Export HTML                         | ⬜ Todo |
-| Day 7      | May 26 | Export HTML + Safe Navigation       | ⬜ Todo |
-| Day 8      | May 27 | QA + Submit                         | ⬜ Todo |
