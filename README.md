@@ -3,8 +3,8 @@
 A browser-based page builder where non-technical users can browse templates, customize them, and export as a static HTML page.
 
 **Author:** Tran Dinh Phuoc Nghia
-**Status:** In Progress
-**Started:** May 20, 2026
+**Status:** Completed
+**Submitted:** May 27, 2026
 
 ---
 
@@ -36,11 +36,15 @@ npm run dev
 
 ```
 src/
-  types/        → TypeScript types
-  store/        → Zustand store
+  components/   → UI components (editor, gallery, shared)
+  constants/    → App constants (STORAGE_KEY)
   data/         → Hardcoded templates
-  components/   → UI components
-  utils/        → Export HTML helper
+  helpers/      → Style resolvers (exports: exportHTML; import:renderInternalElement; styles: resolveToHex, buildExportTextStyle)
+  hooks/        → Custom hooks (useElementSelect)
+  pages/        → Page components (GalleryPage, EditorPage)
+  stores/       → Zustand store + slices
+  types/        → TypeScript types
+  utils/        → Export + download utilities (sanitize: escapeHTML, isSafeUrl)
 ```
 
 ---
